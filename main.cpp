@@ -1,85 +1,58 @@
 #include <iostream>
 
+// generar una solucion que permita obtener el area de:
+// un cuadrado
+// un rectangulo
+// y un circulo
+
 using namespace std;
-double saldo = 8000;
-int obtenerEdad(int e){
-    int operacion = 2018 - e ;
-    return operacion ;
-}
-void sumarSaldo(double s){
-    saldo = saldo + s;
-    }
-
-
-void restarSaldo(double a){
-
-     if(saldo >=  a){
-                saldo = saldo - a;
-
-    }   else{
-         cout << " el saldo es insuficiente" << endl ;
-        }
+int obtenerAreaCuadrado (int a){
+    int operacion = a*a;
+    return operacion;
 }
 
-string obtenerTipoCuenta(){
-    string frase = "";
-
-    if (saldo < 100){
-        frase = "usted es un cliente tipo D";
-    }else{
-        if((saldo>=101) & (saldo <=1000)){
-            frase = "usted  es un  cliente tipo C";
-        }else{
-            if((saldo>=1001) & (saldo <=10000)){
-                frase = "usted es un cliente tipo B";
-            }else{
-                if((saldo>=101) & (saldo <=1000)){
-                    frase = "usted es un cliente tipo C";
-                }else{
-                    frase = "usted es un cliente tipo A" ;
-
-                }
-            }
-        }
-    }
-    return frase;
-
+int obtenerAreaRectangulo (int c, int d){
+    int operacion = c * d;
+    return operacion;
 }
-
-
-
-
-
-
+int obtenerAreaCirculo (int e){
+    int operacion = 3.1415 * e*e;
+    return operacion;
+}
 int main()
 {
     int opcion = 0;
-    double ingresoValor = 0;
-    int nacimiento ;
-    cout << "ingrese su año de nacimiento"<< endl ;
-    cin >> nacimiento;
-    cout << "ingrese una opcion 1 sumar 2 restar"<< endl ;
-    cin >> opcion;
+    double lado = 0;
+    double base = 0;
+    double altura = 0;
+    double radio = 0;
+    double resultado = 0;
+    cout << "Ingrese la opcion: 1. cuadrado 2. rectangulo 3. circulo" << endl;
+    cin >> opcion ;
 
-    if (opcion == 1 ){
-        cout << "ingrese el valor a sumar" << endl;
-        cin >> ingresoValor;
-        sumarSaldo(ingresoValor);
-
+    if (opcion == 1){
+        cout << "Ingrese el valor del lado del cuadrado" << endl;
+        cin >> lado;
+        resultado = obtenerAreaCuadrado(lado);
+        cout << "El valor del área del cuadrado es: " << resultado << endl;
     }else{
-        if(opcion == 2) {
-
-            cout << "ingrese el valor a restar" << endl;
-            cin >> ingresoValor;
-            restarSaldo(ingresoValor);
+        if(opcion == 2){
+            cout << "Ingrese el valor de la base del rectangulo" << endl;
+            cin >> base;
+            cout << "Ingrese el valor de la altura del rectangulo" << endl;
+            cin >> altura;
+            resultado = obtenerAreaRectangulo(base, altura);
+            cout << "El valor del área del rectangulo es: " << resultado << endl;
         }else{
-            cout << " opcion incorrecta, no se modifica el saldo " << endl ;
+            if(opcion==3){
+                cout << "Ingrese el valor del radio del circulo" << endl;
+                cin >> radio;
+                resultado = obtenerAreaCirculo(radio);
+                cout << "El valor del área del circulo es: " << resultado << endl;
+            }else{
+                cout << "existe un error en la opcion seleccionada" << endl;
+            }
         }
     }
-    cout << "  Hola tu saldo es:   " <<    saldo     << endl ;
-    cout << obtenerTipoCuenta() << endl ;
-
-    int edad= obtenerEdad(nacimiento);
-    cout << " su edad es    " << edad << endl ;
     return 0;
 }
